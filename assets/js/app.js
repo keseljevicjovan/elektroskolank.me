@@ -51,10 +51,12 @@ async function navigate(url) {
     app.innerHTML = `<h1>404 - Stranica nije pronađena</h1>`;
     history.pushState(null, '', path);
     document.title = '404 - Stranica nije pronađena';
+    setActiveLink(null);
     return;
   }
 
   const route = routes[path];
+  setActiveLink(path);
 
   if (cache[path]) {
     app.innerHTML = cache[path].html;
@@ -104,6 +106,16 @@ function executeJS(code) {
   script.remove();
 }
 
+function setActiveLink(path) {
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+  });
+
+  const activeLink = document.querySelector(`.nav-link[href="${path}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+}
 
 function updateTitle(path) {
   if (metaData[path] && metaData[path].title) {
