@@ -9,32 +9,202 @@
     <script src="/assets/js/app.js" async defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#0f4c81',
-              secondary: '#3498db',
-              accent: '#f39c12',
-              success: '#27ae60',
-              warning: '#e67e22',
-              danger: '#e74c3c',
-            }
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f4c81',
+            secondary: '#3498db',
+            accent: '#f39c12',
+            success: '#27ae60',
+            warning: '#e67e22',
+            danger: '#e74c3c',
           }
         }
       }
+    }
     </script>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/" data-link>Pocetna</a>
-        <a href="/o-nama" data-link>O nama</a>
-      </nav>
-    </header>
+    <nav class="sticky-nav fixed w-full z-50 py-4 px-6">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="/" data-link>
+          <div class="flex items-center space-x-4">
+            <img src="./assets/images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
+            <div>
+              <h1 class="text-xl font-bold text-white">Elektro Škola</h1>
+              <p class="text-sm text-white opacity-80">Nikšić</p>
+            </div>
+          </div>
+        </a>
+
+        <div class="desktop-nav hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-white hover:text-secondary transition-colors active" data-link>Početna</a>
+
+          <div class="dropdown">
+            <a href="/o-nama" class="nav-link text-white hover:text-secondary transition-colors" data-link>O nama</a>
+            <div class="dropdown-content">
+              <a href="/o-nama" class="dropdown-item" data-link>
+                <i class="fas fa-history"></i>Istorijat škole
+              </a>
+              <a href="/smjerovi" class="dropdown-item" data-link>
+                <i class="fas fa-graduation-cap"></i>Obrazovni programi koje nudimo
+              </a>
+              <a href="/smjerovi" class="dropdown-item" data-link>
+                <i class="fas fa-user-graduate"></i>Obrazovanje odraslih
+              </a>
+              <a href="#" class="dropdown-item" data-link>
+                <i class="fas fa-handshake"></i>Saradnja
+              </a>
+              <a href="#" class="dropdown-item" data-link>
+                <i class="fas fa-presentation"></i>Prezentacija škole
+              </a>
+              <a href="#" class="dropdown-item" data-link>
+                <i class="fas fa-download"></i>Novi školski flajer – preuzmi
+              </a>
+              <a href="#" class="dropdown-item" data-link>
+                <i class="fas fa-download"></i>Školski flajer – preuzmi
+              </a>
+            </div>
+          </div>
+
+          <a href="/smjerovi" class="nav-link text-white hover:text-secondary transition-colors" data-link>Smjerovi</a>
+
+          <div class="dropdown">
+            <a href="/vijesti" class="nav-link text-white hover:text-secondary transition-colors" data-link>Vijesti</a>
+            <div class="dropdown-content">
+              <a href="/vijesti" class="dropdown-item" data-link>
+                <i class="fas fa-bullhorn"></i>Obavještenja
+              </a>
+              <a href="/vijesti" class="dropdown-item" data-link>
+                <i class="fas fa-calendar-alt"></i>Događaji
+              </a>
+              <a href="/vijesti" class="dropdown-item" data-link>
+                <i class="fas fa-bus"></i>Ekskurzije
+              </a>
+            </div>
+          </div>
+
+          <a href="/galerija" class="nav-link text-white hover:text-secondary transition-colors" data-link>Galerija</a>
+
+          <div class="dropdown">
+            <a href="/dokumenta" class="nav-link text-white hover:text-secondary transition-colors" data-link>Dokumenti</a>
+            <div class="dropdown-content">
+              <a href="/dokumenta" class="dropdown-item" data-link>
+                <i class="fas fa-graduation-cap"></i>Konkurs za upis u I razred
+              </a>
+              <a href="/dokumenta" class="dropdown-item" data-link>
+                <i class="fas fa-balance-scale"></i>Zakoni, pravilnici i dokumenta
+              </a>
+              <a href="/dokumenta" class="dropdown-item" data-link>
+                <i class="fas fa-shield-alt"></i>Plan integriteta
+              </a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="/takmicenja" class="nav-link text-white hover:text-secondary transition-colors" data-link>Takmičenja</a>
+            <div class="dropdown-content">
+              <a href="/takmicenja" class="dropdown-item" data-link>
+                <i class="fas fa-school"></i>Školska takmičenja
+              </a>
+              <a href="/takmicenja" class="dropdown-item" data-link>
+                <i class="fas fa-flag"></i>Državna takmičenja
+              </a>
+              <a href="/takmicenja" class="dropdown-item" data-link>
+                <i class="fas fa-globe"></i>Međunarodna takmičenja
+              </a>
+              <a href="/takmicenja" class="dropdown-item" data-link>
+                <i class="fas fa-running"></i>Sportska takmičenja
+              </a>
+            </div>
+          </div>
+
+          <a href="/kontakt" class="nav-link text-white hover:text-secondary transition-colors" data-link>Kontakt</a>
+        </div>
+
+        <button class="mobile-nav md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
 
     <main id="app">
       <p>This is the home page.</p>
     </main>
+
+    <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <div class="flex items-center space-x-4 mb-6">
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <img src="/assets/images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
+              </div>
+              <div>
+                <h3 class="text-xl font-bold">Elektro Škola Nikšić</h3>
+                <p class="text-gray-300">Srednja stručna škola</p>
+              </div>
+            </div>
+            <p class="text-gray-300 mb-6">
+              Elektrotehnička škola u Crnoj Gori koja priprema stručnjake za budućnost kroz kvalitetno obrazovanje i praktičan rad.
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/srednjastrucnaskolaniksic" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-secondary/80 transition-colors" data-link>
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/ju_srednja_strucna_skolank" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-secondary/80 transition-colors" data-link>
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold mb-4">Brzi linkovi</h4>
+            <ul class="space-y-2">
+              <li><a href="/o-nama" class="text-gray-300 hover:text-white transition-colors" data-link>O nama</a></li>
+              <li><a href="/smjerovi" class="text-gray-300 hover:text-white transition-colors" data-link>Smjerovi</a></li>
+              <li><a href="/dokumenta" class="text-gray-300 hover:text-white transition-colors" data-link>Dokumenti</a></li>
+              <li><a href="/galerija" class="text-gray-300 hover:text-white transition-colors" data-link>Galerija</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt mr-3 text-secondary"></i>
+                <span class="text-gray-300">Ulica Vuka Karadžića 15<br>81400 Nikšić</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-phone mr-3 text-secondary"></i>
+                <span class="text-gray-300">+382 40 123 456</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-secondary"></i>
+                <span class="text-gray-300">info@elektroskolank.me</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p class="text-gray-400">
+            © 2025 Srednja stručna škola Nikšić - Elektrotehnička škola. Sva prava zadržana.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="notification-toast" id="toast">
+      <div class="flex items-center">
+        <i class="fas fa-check-circle text-success mr-3"></i>
+        <span>Poruka je uspješno poslana!</span>
+      </div>
+    </div>
   </body>
 </html>

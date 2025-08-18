@@ -1,0 +1,189 @@
+<div id="gallery" class="page">
+  <section class="pt-32 pb-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold text-gray-800 mb-6">Galerija</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Pogledajte fotografije naših prostorija, laboratorija, događaja i aktivnosti učenika.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="gallery-filter active px-6 py-2 rounded-full bg-secondary text-white font-semibold" data-filter="all">
+          Sve
+        </button>
+        <button class="gallery-filter px-6 py-2 rounded-full bg-white text-gray-600 font-semibold hover:bg-secondary hover:text-white transition-colors" data-filter="facilities">
+          Prostorije
+        </button>
+        <button class="gallery-filter px-6 py-2 rounded-full bg-white text-gray-600 font-semibold hover:bg-secondary hover:text-white transition-colors" data-filter="labs">
+          Laboratoriji
+        </button>
+        <button class="gallery-filter px-6 py-2 rounded-full bg-white text-gray-600 font-semibold hover:bg-secondary hover:text-white transition-colors" data-filter="events">
+          Događaji
+        </button>
+        <button class="gallery-filter px-6 py-2 rounded-full bg-white text-gray-600 font-semibold hover:bg-secondary hover:text-white transition-colors" data-filter="students">
+          Učenici
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="gallery-item facilities bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal1')">
+          <div class="h-64 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+            <i class="fas fa-school text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Glavna zgrada škole</h3>
+            <p class="text-gray-600 text-sm">Moderna zgrada sa 30 učionica</p>
+          </div>
+        </div>
+
+        <div class="gallery-item facilities bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal2')">
+          <div class="h-64 bg-gradient-to-br from-accent to-warning flex items-center justify-center">
+            <i class="fas fa-chalkboard text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Učionica za teoriju</h3>
+            <p class="text-gray-600 text-sm">Opremljena najsavremenijom tehnologijom</p>
+          </div>
+        </div>
+
+        <div class="gallery-item facilities bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal3')">
+          <div class="h-64 bg-gradient-to-br from-success to-primary flex items-center justify-center">
+            <i class="fas fa-utensils text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Školska kafeterija</h3>
+            <p class="text-gray-600 text-sm">Prostrana i moderna kafeterija</p>
+          </div>
+        </div>
+
+        <div class="gallery-item labs bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal4')">
+          <div class="h-64 bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
+            <i class="fas fa-microscope text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Laboratorij za elektroniku</h3>
+            <p class="text-gray-600 text-sm">Najsavremenija oprema za praktičan rad</p>
+          </div>
+        </div>
+
+        <div class="gallery-item labs bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal5')">
+          <div class="h-64 bg-gradient-to-br from-warning to-danger flex items-center justify-center">
+            <i class="fas fa-laptop-code text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Računarski centar</h3>
+            <p class="text-gray-600 text-sm">40 najnovijih računara</p>
+          </div>
+        </div>
+
+        <div class="gallery-item labs bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal6')">
+          <div class="h-64 bg-gradient-to-br from-success to-secondary flex items-center justify-center">
+            <i class="fas fa-solar-panel text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Lab za obnovljive izvore</h3>
+            <p class="text-gray-600 text-sm">Solarna energija i vjetroelektrane</p>
+          </div>
+        </div>
+
+        <div class="gallery-item events bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal7')">
+          <div class="h-64 bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+            <i class="fas fa-trophy text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Takmičenje 2024</h3>
+            <p class="text-gray-600 text-sm">Pobjednici republičkog takmičenja</p>
+          </div>
+        </div>
+
+        <div class="gallery-item events bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal8')">
+          <div class="h-64 bg-gradient-to-br from-secondary to-success flex items-center justify-center">
+            <i class="fas fa-graduation-cap text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Promocija 2024</h3>
+            <p class="text-gray-600 text-sm">Svečana promocija diplomanata</p>
+          </div>
+        </div>
+
+        <div class="gallery-item events bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal9')">
+          <div class="h-64 bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+            <i class="fas fa-calendar-day text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Dan otvorenih vrata</h3>
+            <p class="text-gray-600 text-sm">Posjetitelji upoznaju našu školu</p>
+          </div>
+        </div>
+
+        <div class="gallery-item students bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal10')">
+          <div class="h-64 bg-gradient-to-br from-success to-warning flex items-center justify-center">
+            <i class="fas fa-users text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Učenici na praksi</h3>
+            <p class="text-gray-600 text-sm">Praktičan rad u laboratoriju</p>
+          </div>
+        </div>
+
+        <div class="gallery-item students bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal11')">
+          <div class="h-64 bg-gradient-to-br from-primary to-warning flex items-center justify-center">
+            <i class="fas fa-project-diagram text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Projektni rad</h3>
+            <p class="text-gray-600 text-sm">Učenici rade na svojim projektima</p>
+          </div>
+        </div>
+
+        <div class="gallery-item students bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="openModal('modal12')">
+          <div class="h-64 bg-gradient-to-br from-secondary to-danger flex items-center justify-center">
+            <i class="fas fa-handshake text-6xl text-white"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Timski rad</h3>
+            <p class="text-gray-600 text-sm">Saradnja na grupnim projektima</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.gallery-filter');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+    
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+    
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-secondary', 'text-white');
+            btn.classList.add('bg-white', 'text-gray-600');
+          });
+          this.classList.add('active', 'bg-secondary', 'text-white');
+          this.classList.remove('bg-white', 'text-gray-600');
+    
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.classList.contains(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</div>
