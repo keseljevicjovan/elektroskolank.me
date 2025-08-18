@@ -2,44 +2,37 @@
 // Supports static routes, 404 page and caching
 
 const routes = {
-  "/": {
-    url: "/pages/home.html",
-    title: "SSSNK"
-  },
-  "/o-nama": {
-    url: "/pages/about.html",
-    title: "O nama - SSSNK"
-  },
-  "/smjerovi": {
-    url: "/pages/programs.html",
-    title: "Smjerovi - SSSNK"
-  },
-  "/dokumenta": {
-    url: "/pages/documents.html",
-    title: "Dokumenta - SSSNK"
-  },
-  "/takmicenja": {
-    url: "/pages/competitions.html",
-    title: "Takmičenja - SSSNK"
-  },
-  "/kontakt": {
-    url: "/pages/contact.html",
-    title: "Kontakt - SSSNK"
-  },
-  "/vijesti": {
-    url: "/pages/news.html",
-    title: "Vijesti - SSSNK"
-  },
-  "/galerija": {
-    url: "/pages/gallery.html",
-    title: "Galerija - SSSNK"
-  }
+  "/":           { url: "/pages/home.html",         title: "SSSNK" },
+  "/o-nama":     { url: "/pages/about.html",        title: "O nama - SSSNK" },
+  "/smjerovi":   { url: "/pages/programs.html",     title: "Smjerovi - SSSNK" },
+  "/dokumenta":  { url: "/pages/documents.html",    title: "Dokumenta - SSSNK" },
+  "/takmicenja": { url: "/pages/competitions.html", title: "Takmičenja - SSSNK" },
+  "/kontakt":    { url: "/pages/contact.html",      title: "Kontakt - SSSNK" },
+  "/vijesti":    { url: "/pages/news.html",         title: "Vijesti - SSSNK" },
+  "/galerija":   { url: "/pages/gallery.html",      title: "Galerija - SSSNK" }
 };
 
 const app = document.getElementById('app');
 const cache = {};
 let currentSlideIndex = 0;
 const totalSlides = 3;
+
+async function loadNotFound(path) {
+  try {
+    const res = await fetch('/pages/page-404.html');
+    const html = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const main = doc.querySelector('.page') || { innerHTML: html };
+    app.innerHTML = main.innerHTML;
+  } catch (err) {
+    console.error(err);
+    app.innerHTML = `<h1>404 - Stranica nije pronađena</h1>`;
+  }
+  history.pushState(null, '', path);
+  document.title = '404 - Stranica nije pronađena';
+  setActiveLink(null);
+}
 
 async function navigate(url) {
   const path = new URL(url, location.origin).pathname;
@@ -48,10 +41,7 @@ async function navigate(url) {
   updateNavScroll();
 
   if (!routes[path]) {
-    app.innerHTML = `<h1>404 - Stranica nije pronađena</h1>`;
-    history.pushState(null, '', path);
-    document.title = '404 - Stranica nije pronađena';
-    setActiveLink(null);
+    await loadNotFound(path);
     return;
   }
 
@@ -68,7 +58,13 @@ async function navigate(url) {
 
   try {
     const res = await fetch(route.url);
-    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    if (!res.ok) {
+      if (res.status === 404) {
+        await loadNotFound(path);
+        return;
+      }
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
 
     const html = await res.text();
     const parser = new DOMParser();
@@ -80,10 +76,7 @@ async function navigate(url) {
 
     if (!main) throw new Error('Main element nije pronađen u stranici.');
 
-    cache[path] = {
-      html: main.innerHTML,
-      js: jsCode
-    };
+    cache[path] = { html: main.innerHTML, js: jsCode };
 
     app.innerHTML = main.innerHTML;
     executeJS(jsCode);
