@@ -100,6 +100,7 @@ function executeJS(code) {
 }
 
 function setActiveLink(path) {
+  scrollToTop();
   document.querySelectorAll('.nav-link').forEach(link => {
     link.classList.remove('active');
   });
@@ -201,3 +202,20 @@ function animateCounters() {
     }, 20);
   });
 }
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  const content = document.getElementById("page-content");
+
+  preloader.classList.add("hide");
+  setTimeout(() => {
+    preloader.style.display = "none";
+  }, 600);
+});

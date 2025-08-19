@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <div id="preloader">
+    <div class="loader"></div>
+    <p>Učitavanje...</p>
+  </div>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSSNK</title>
+    <style>
+      #preloader {
+        position: fixed;
+        inset: 0;
+        background: #f9fafb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 99999;
+        font-family: Arial, sans-serif;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #preloader .loader {
+        width: 60px;
+        height: 60px;
+        border: 6px solid #ddd;
+        border-top: 6px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 15px;
+      }
+      #preloader p {
+        color: #555;
+        font-size: 1rem;
+      }
+      @keyframes spin {
+      to { transform: rotate(360deg); }
+      }
+      #preloader.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+    </style>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/js/app.js" async defer></script>
@@ -26,11 +64,12 @@
     </script>
   </head>
   <body>
+
     <nav class="sticky-nav fixed w-full z-50 py-4 px-6">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <a href="/" data-link>
           <div class="flex items-center space-x-4">
-            <img src="./assets/images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
+            <img src="/assets/images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
             <div>
               <h1 class="text-xl font-bold text-white">Elektro Škola</h1>
               <p class="text-sm text-white opacity-80">JU Srednja Stručna Škola Nikšić</p>
@@ -123,14 +162,13 @@
           <a href="/kontakt" class="nav-link text-white hover:text-secondary transition-colors" data-link>Kontakt</a>
         </div>
 
-        <button class="mobile-nav md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+        <button class="mobile-nav md:hidden text-black text-2xl" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </nav>
 
     <main id="app">
-      <p>This is the home page.</p>
     </main>
 
     <div class="back-to-top" onclick="scrollToTop()">
